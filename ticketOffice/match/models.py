@@ -16,9 +16,10 @@ class Match(models.Model):
     team1 = models.ForeignKey(Team, null=False, on_delete=models.CASCADE, related_name='team1')
     team2 = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='team2')
     stadium = models.ForeignKey(Stadium, on_delete=models.CASCADE)
-    time = models.DateTimeField()
+    time = models.DateTimeField(blank=True, null=True)
     
     def __str__(self):
         return self.team1.name + ' vs ' + self.team2.name
 
-
+    class Meta:
+        verbose_name_plural = 'Matches'
